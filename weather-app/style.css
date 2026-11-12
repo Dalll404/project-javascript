@@ -38,3 +38,9 @@ body{
     outline: none;
     border: 1px solid rgb(1, 90, 192);
 }
+
+.main {
+    padding-top: 40px;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+}

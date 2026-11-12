@@ -15,6 +15,10 @@ function getWeather() {
     .then(response => response.json())
     .then(data => {
         console.log("Suhu saat ini", data)
+        // const infoSuhu = data.main.temp;
+
+        infoWeather.innerHTML = `Data saat ini adalah ${data.main.temp}`
+        // infoWeather.innerHTML = `<p class="main">suhu saat ini adalah ${infoSuhu}</p>`
     })
     .catch(error => console.log("Ada yang error", error))
 
