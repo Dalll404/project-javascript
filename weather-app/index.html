@@ -1,19 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f2ec">
+    <title>Prakiraan Cuaca</title>
     <link rel="stylesheet" href="style.css">
-    <title>weather app</title>
 </head>
 <body>
-    <h1 class="judul">Weather App</h1>
-    <div class="card">
-        <p>Enter a city to get its weather information:</p>
-        <input type="text" id="cityInput" placeholder="City Name">
-        <button onclick="getWeather()">Get Weather</button>
-        <div id="weatherInfo"></div>
-    </div>
+    <main class="weather-app">
+        <header class="topbar">
+            <a class="wordmark" href="#" aria-label="Beranda prakiraan cuaca">
+                <span class="wordmark-mark" aria-hidden="true">°</span>
+                <span>langit<span class="wordmark-period">.</span></span>
+            </a>
+            <span class="topbar-note">CUACA, SEKARANG</span>
+        </header>
+
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">Prakiraan lokal</p>
+            <h1 id="page-title">Bagaimana cuaca<br>di <span>kotamu?</span></h1>
+            <p class="intro-copy">Cari kota untuk melihat kondisi cuaca terkini.</p>
+        </section>
+
+        <form class="search" id="weatherForm">
+            <label class="sr-only" for="cityInput">Nama kota</label>
+            <span class="search-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                    <path d="m16 16 4.2 4.2"></path>
+                </svg>
+            </span>
+            <input id="cityInput" name="city" type="search" placeholder="Contoh: Bandung" autocomplete="off" required>
+            <button type="submit">
+                <span>Cari cuaca</span>
+                <span aria-hidden="true">↗</span>
+            </button>
+        </form>
+
+        <div class="message" id="weatherMessage" role="status" aria-live="polite"></div>
+        <section class="weather-result" id="weatherInfo" aria-live="polite" aria-label="Hasil cuaca"></section>
+
+        <footer class="footer">
+            <span>Data cuaca dari OpenWeather</span>
+            <span class="footer-dot" aria-hidden="true"></span>
+            <span>Perbarui kapan saja</span>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>
