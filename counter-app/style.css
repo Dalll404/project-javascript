@@ -52,6 +52,33 @@ h1 {
   line-height: 1;
 }
 
+.step-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: #69758d;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.step-control input {
+  width: 88px;
+  padding: 9px 10px;
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #dfe3ed;
+  border-radius: 10px;
+  font: inherit;
+  text-align: center;
+}
+
+.step-control input:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
 .controls {
   display: flex;
   justify-content: center;
