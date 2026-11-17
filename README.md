@@ -10,7 +10,7 @@
 | [Carousel Image Slider](carousel-image-slider/)   | Browse images with a carousel slider.                 |
 | [Color Picker](color-picker/)                     | Select and preview colors.                            |
 | [Countdown Timer](count-down-timer/)              | Create a countdown to a target date or time.          |
-| [Counter App](counter-app/)                       | Increase, decrease, and reset a counter.              |
+| [Counter App](counter-app/)                       | Increase or decrease a counter by a customizable step. |
 | [FAQ Accordion](faq-accordion/)                   | Expand and collapse frequently asked questions.       |
 | [OTP Input](kode-otp/)                            | Enter a one-time password with separate input fields. |
 | [Number Guessing Game](number-guessing-game/)     | Guess a randomly generated number.                    |

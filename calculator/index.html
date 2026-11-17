@@ -3,44 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11111d" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Calculator App</title>
+    <title>Calculator</title>
   </head>
   <body>
-    <div class="calculator">
-      <div class="calculator-screen">
-        <!-- Display screen of the calculator -->
-        <input type="text" class="calculator-display" value="0" disabled />
+    <main class="calculator" aria-label="Calculator">
+      <header class="calculator-header">
+        <div class="brand-mark" aria-hidden="true">✳</div>
+        <div>
+          <p class="eyebrow">EVERYDAY TOOL</p>
+          <h1>Calculator</h1>
+        </div>
+        <span class="live-indicator" aria-label="Ready"></span>
+      </header>
+
+      <section class="calculator-screen" aria-label="Calculator display">
+        <p class="calculator-expression" aria-hidden="true"></p>
+        <input
+          type="text"
+          class="calculator-display"
+          value="0"
+          readonly
+          aria-label="Result"
+          aria-live="polite"
+          aria-atomic="true"
+        />
+      </section>
+
+      <div class="calculator-keys" aria-label="Calculator keys">
+        <button class="all-clear utility" type="button" value="AC" aria-label="Clear all">AC</button>
+        <button class="operator utility" type="button" value="✔" aria-label="Square root">√</button>
+        <button class="operator utility" type="button" value="%" aria-label="Percent">%</button>
+        <button class="operator" type="button" value="/" aria-label="Divide">÷</button>
+
+        <button type="button" value="7">7</button>
+        <button type="button" value="8">8</button>
+        <button type="button" value="9">9</button>
+        <button class="operator" type="button" value="*" aria-label="Multiply">×</button>
+
+        <button type="button" value="4">4</button>
+        <button type="button" value="5">5</button>
+        <button type="button" value="6">6</button>
+        <button class="operator" type="button" value="-" aria-label="Subtract">−</button>
+
+        <button type="button" value="1">1</button>
+        <button type="button" value="2">2</button>
+        <button type="button" value="3">3</button>
+        <button class="operator" type="button" value="+" aria-label="Add">+</button>
+
+        <button class="zero" type="button" value="0">0</button>
+        <button class="decimal" type="button" value="." aria-label="Decimal point">.</button>
+        <button class="equal-sign" type="button" value="=" aria-label="Equals">=</button>
       </div>
-      <div class="calculator-keys">
-        <!-- Operator buttons -->
-        <button class="operator" value="%">%</button>
-        <button class="operator" value="✔">✔</button>
-        <button class="operator" value="/">&divide;</button>
-        <button class="operator" value="*">&times;</button>
-
-        <!-- numbers button -->
-        <button value="7">7</button>
-        <button value="8">8</button>
-        <button value="9">9</button>
-        <button class="operator" value="-">-</button>
-
-        <button value="4">4</button>
-        <button value="5">5</button>
-        <button value="6">6</button>
-        <button class="operator" value="-">+</button>
-
-        <button value="1">1</button>
-        <button value="2">2</button>
-        <button value="3">3</button>
-        <button class="equal-sign" value="=">=</button>
-
-        <!-- Zero buttons span 2 colums -->
-         <button class="zero" value="0">0</button>
-         <button class="decimal" value=".">.</button>
-         <button class="all-clear" value="AC">AC</button>
-      </div>
-    </div>
+      <p class="keyboard-hint">TIP <span>Use your keyboard to calculate</span></p>
+    </main>
 
     <script src="script.js"></script>
   </body>
