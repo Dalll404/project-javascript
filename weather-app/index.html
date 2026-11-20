@@ -3,48 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f4f2ec">
-    <title>Prakiraan Cuaca</title>
+    <meta name="theme-color" content="#101b32">
+    <title>Skycast — Prakiraan Cuaca</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="weather-app">
         <header class="topbar">
-            <a class="wordmark" href="#" aria-label="Beranda prakiraan cuaca">
-                <span class="wordmark-mark" aria-hidden="true">°</span>
-                <span>langit<span class="wordmark-period">.</span></span>
+            <a class="brand" href="#" aria-label="Skycast beranda">
+                <span class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"></path>
+                    </svg>
+                </span>
+                <span>Skycast</span>
             </a>
-            <span class="topbar-note">CUACA, SEKARANG</span>
+            <div class="header-status"><span></span> Live forecast</div>
         </header>
 
-        <section class="intro" aria-labelledby="page-title">
-            <p class="eyebrow">Prakiraan lokal</p>
-            <h1 id="page-title">Bagaimana cuaca<br>di <span>kotamu?</span></h1>
-            <p class="intro-copy">Cari kota untuk melihat kondisi cuaca terkini.</p>
+        <section class="workspace">
+            <div class="search-area" aria-labelledby="page-title">
+                <p class="eyebrow">Prakiraan cuaca</p>
+                <h1 id="page-title">Cari cuaca di<br><span>kotamu.</span></h1>
+
+                <form class="search" id="weatherForm">
+                    <label class="sr-only" for="cityInput">Nama kota</label>
+                    <span class="search-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                            <path d="m16 16 4.2 4.2"></path>
+                        </svg>
+                    </span>
+                    <input id="cityInput" name="city" type="search" placeholder="Masukkan nama kota..." autocomplete="off" required>
+                    <button type="submit" aria-label="Cari cuaca">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M5 12h14M13 6l6 6-6 6"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <div class="message" id="weatherMessage" role="status" aria-live="polite">Siap mencari cuaca terkini.</div>
+            </div>
+
+            <section class="weather-result" id="weatherInfo" aria-live="polite" aria-label="Hasil cuaca">
+                <div class="empty-state">
+                    <div class="empty-orbit" aria-hidden="true">
+                        <span class="empty-sun"></span>
+                        <span class="empty-cloud"></span>
+                    </div>
+                    <p>Lokasi pencarianmu akan<br>tampil di sini.</p>
+                </div>
+            </section>
         </section>
 
-        <form class="search" id="weatherForm">
-            <label class="sr-only" for="cityInput">Nama kota</label>
-            <span class="search-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                    <circle cx="10.8" cy="10.8" r="6.8"></circle>
-                    <path d="m16 16 4.2 4.2"></path>
-                </svg>
-            </span>
-            <input id="cityInput" name="city" type="search" placeholder="Contoh: Bandung" autocomplete="off" required>
-            <button type="submit">
-                <span>Cari cuaca</span>
-                <span aria-hidden="true">↗</span>
-            </button>
-        </form>
-
-        <div class="message" id="weatherMessage" role="status" aria-live="polite"></div>
-        <section class="weather-result" id="weatherInfo" aria-live="polite" aria-label="Hasil cuaca"></section>
-
         <footer class="footer">
-            <span>Data cuaca dari OpenWeather</span>
+            <span>OpenWeather data</span>
             <span class="footer-dot" aria-hidden="true"></span>
-            <span>Perbarui kapan saja</span>
+            <span>Update otomatis</span>
         </footer>
     </main>
 

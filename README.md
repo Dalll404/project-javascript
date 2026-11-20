@@ -15,9 +15,11 @@
 | [OTP Input](kode-otp/)                            | Enter a one-time password with separate input fields. |
 | [Number Guessing Game](number-guessing-game/)     | Guess a randomly generated number.                    |
 | [Point App](point-app/)                           | Manage points through a simple interface.             |
+| [Pomodoro](pomodoro/)                             | Focus and take breaks with a configurable timer.      |
 | [Quiz App](quiz-app/)                             | Answer questions and track your score.                |
 | [Random Quote Generator](random-quote-generator/) | Display a random quote.                               |
 | [To-Do List](to-do-list/)                         | Add, manage, and remove tasks.                        |
+| [Weather App](weather-app/)                       | Search for current weather information by city.       |
 
 ## Getting Started
 

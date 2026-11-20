@@ -44,6 +44,7 @@ async function getWeather(event) {
     }
 
     renderWeather(data);
+    setWeatherTheme(data.weather[0].icon);
     weatherMessage.dataset.state = "success";
     weatherMessage.textContent = `Cuaca terkini untuk ${data.name}.`;
   } catch (error) {
@@ -130,4 +131,16 @@ function createDetail(label, value) {
 
   detail.append(detailLabel, detailValue);
   return detail;
+}
+
+function setWeatherTheme(iconCode) {
+  const icon = iconCode || "";
+
+  if (/^(09|10|11)/.test(icon)) {
+    document.body.dataset.weather = "rain";
+  } else if (/^(02|03|04)/.test(icon)) {
+    document.body.dataset.weather = "cloud";
+  } else {
+    delete document.body.dataset.weather;
+  }
 }
