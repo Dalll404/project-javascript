@@ -18,7 +18,7 @@
 | [Pomodoro](pomodoro/)                             | Focus and take breaks with a configurable timer.      |
 | [Quiz App](quiz-app/)                             | Answer questions and track your score.                |
 | [Random Quote Generator](random-quote-generator/) | Display a random quote.                               |
-| [To-Do List](to-do-list/)                         | Add, manage, and remove tasks.                        |
+| [To-Do List](to-do-list/)                         | Manage tasks with priorities, filters, sorting, and local storage. |
 | [Weather App](weather-app/)                       | Search for current weather information by city.       |
 
 ## Getting Started
@@ -41,6 +41,20 @@ project-name/
 ├── script.js
 └── style.css
 ```
+
+## Fitur To-Do List
+
+Project [To-Do List](to-do-list/) menyediakan:
+
+- Tambah, edit, selesaikan, dan hapus tugas
+- Tanggal jatuh tempo serta prioritas rendah, sedang, atau tinggi
+- Filter semua, hari ini, aktif, dan selesai
+- Pencarian dan urutan berdasarkan kecerdasan, waktu, prioritas, atau tanggal
+- Undo setelah menghapus satu atau beberapa tugas
+- Progress tugas hari ini
+- Penyimpanan otomatis melalui `localStorage`
+- Mode terang dan gelap
+- Shortcut `/` untuk pencarian, `Escape` untuk keluar dari pencarian/edit, dan `Ctrl/Cmd + Enter` untuk menyimpan tugas
 
 ## License
 
