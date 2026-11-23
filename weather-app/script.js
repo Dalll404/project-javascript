@@ -3,8 +3,41 @@ const inputCity = document.getElementById("cityInput");
 const infoWeather = document.getElementById("weatherInfo");
 const weatherMessage = document.getElementById("weatherMessage");
 const submitButton = form.querySelector("button");
+const locationButton = document.getElementById("locationButton");
+const quickCityButtons = document.querySelectorAll("[data-city]");
+const unitButtons = document.querySelectorAll("[data-unit]");
+
+let currentWeatherData = null;
+let currentUnit = "metric";
+const API_KEY = "fd2e306e0d4a572819b02b960af9d268";
 
 form.addEventListener("submit", getWeather);
+locationButton.addEventListener("click", getWeatherByLocation);
+
+quickCityButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    inputCity.value = button.dataset.city;
+    form.requestSubmit();
+  });
+});
+
+unitButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.dataset.unit === currentUnit) return;
+
+    currentUnit = button.dataset.unit;
+    unitButtons.forEach((unitButton) => {
+      const isActive = unitButton === button;
+      unitButton.classList.toggle("active", isActive);
+      unitButton.setAttribute("aria-pressed", String(isActive));
+    });
+
+    if (!currentWeatherData) return;
+
+    const URI = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(currentWeatherData.name)}&appid=${API_KEY}&units=${currentUnit}`;
+    fetchWeather(URI);
+  });
+});
 
 async function getWeather(event) {
   event.preventDefault();
@@ -17,8 +50,41 @@ async function getWeather(event) {
     return;
   }
 
-  const API_KEY = "fd2e306e0d4a572819b02b960af9d268";
-  const URI = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+  const URI = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=${currentUnit}`;
+
+  await fetchWeather(URI);
+}
+
+async function getWeatherByLocation() {
+  if (!navigator.geolocation) {
+    weatherMessage.dataset.state = "error";
+    weatherMessage.textContent = "Browser tidak mendukung akses lokasi.";
+    return;
+  }
+
+  locationButton.disabled = true;
+  weatherMessage.dataset.state = "loading";
+  weatherMessage.textContent = "Mengambil lokasi perangkat...";
+
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const { latitude, longitude } = position.coords;
+      const URI = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=${currentUnit}`;
+      await fetchWeather(URI);
+      locationButton.disabled = false;
+    },
+    (error) => {
+      weatherMessage.dataset.state = "error";
+      weatherMessage.textContent = error.code === 1
+        ? "Izin lokasi ditolak. Aktifkan izin lokasi untuk mencoba lagi."
+        : "Lokasi perangkat tidak dapat ditemukan.";
+      locationButton.disabled = false;
+    },
+    { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
+  );
+}
+
+async function fetchWeather(URI) {
 
   infoWeather.replaceChildren();
   weatherMessage.dataset.state = "loading";
@@ -43,6 +109,7 @@ async function getWeather(event) {
       throw new Error("Data cuaca kota ini belum tersedia.");
     }
 
+    currentWeatherData = data;
     renderWeather(data);
     setWeatherTheme(data.weather[0].icon);
     weatherMessage.dataset.state = "success";
@@ -101,16 +168,25 @@ function renderWeather(data) {
 
   const unit = document.createElement("span");
   unit.className = "temperature-unit";
-  unit.textContent = "°C";
+  unit.textContent = currentUnit === "metric" ? "°C" : "°F";
   temperatureWrap.append(temperature, unit);
   mainSection.append(location, temperatureWrap);
 
   const details = document.createElement("div");
   details.className = "weather-details";
+  const windSpeed = Math.round(data.wind?.speed ?? 0);
+  const windUnit = currentUnit === "metric" ? "m/s" : "mph";
+  const visibility = typeof data.visibility === "number"
+    ? `${Math.round(data.visibility / 1000)} km`
+    : "-";
+
   details.append(
     createDetail("Terasa seperti", `${Math.round(main.feels_like)}°`),
     createDetail("Kelembapan", `${main.humidity}%`),
-    createDetail("Angin", `${Math.round(data.wind?.speed ?? 0)} m/s`)
+    createDetail("Angin", `${windSpeed} ${windUnit}`),
+    createDetail("Tekanan", `${main.pressure} hPa`),
+    createDetail("Jarak pandang", visibility),
+    createDetail("Terbit matahari", formatLocalTime(data.sys?.sunrise, data.timezone))
   );
 
   card.append(mainSection, details);
@@ -131,6 +207,18 @@ function createDetail(label, value) {
 
   detail.append(detailLabel, detailValue);
   return detail;
+}
+
+function formatLocalTime(timestamp, timezoneOffset = 0) {
+  if (!timestamp) return "-";
+
+  const date = new Date((timestamp + timezoneOffset) * 1000);
+  return new Intl.DateTimeFormat("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "UTC"
+  }).format(date);
 }
 
 function setWeatherTheme(iconCode) {

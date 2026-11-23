@@ -102,6 +102,45 @@ body[data-weather="cloud"] {
     box-shadow: 0 0 10px rgba(114, 199, 161, 0.8);
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.location-button {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--muted);
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.location-button:hover,
+.location-button:focus-visible {
+    border-color: rgba(255, 200, 90, 0.45);
+    color: var(--accent);
+    outline: none;
+}
+
+.location-button:disabled {
+    cursor: wait;
+    opacity: 0.55;
+}
+
+.location-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 1.5;
+}
+
 .workspace {
     display: grid;
     grid-template-columns: 42% 58%;
@@ -232,6 +271,58 @@ h1 span {
     margin-top: 12px;
     color: var(--muted);
     font-size: 11px;
+}
+
+.search-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.quick-cities,
+.unit-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quick-cities button,
+.unit-toggle button {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    cursor: pointer;
+    transition: 160ms ease;
+}
+
+.quick-cities button {
+    padding: 7px 9px;
+    font-size: 10px;
+}
+
+.unit-toggle button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 11px;
+}
+
+.quick-cities button:hover,
+.unit-toggle button:hover,
+.quick-cities button:focus-visible,
+.unit-toggle button:focus-visible,
+.unit-toggle button.active {
+    border-color: rgba(255, 200, 90, 0.42);
+    color: var(--accent);
+    outline: none;
+}
+
+.unit-toggle button.active {
+    background: rgba(255, 200, 90, 0.1);
 }
 
 .message[data-state="error"] {
@@ -448,6 +539,16 @@ h1 span {
     border-left: 1px solid var(--line);
 }
 
+.detail:nth-child(4),
+.detail:nth-child(5),
+.detail:nth-child(6) {
+    border-top: 1px solid var(--line);
+}
+
+.detail:nth-child(4) {
+    border-left: 0;
+}
+
 .detail-label {
     display: block;
     margin-bottom: 7px;
@@ -587,6 +688,22 @@ h1 span {
     .weather-icon {
         width: 70px;
         height: 70px;
+    }
+
+    .weather-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail:nth-child(3),
+    .detail:nth-child(5) {
+        border-left: 0;
+    }
+
+    .detail:nth-child(3),
+    .detail:nth-child(4),
+    .detail:nth-child(5),
+    .detail:nth-child(6) {
+        border-top: 1px solid var(--line);
     }
 }
 

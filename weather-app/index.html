@@ -19,7 +19,15 @@
                 </span>
                 <span>Skycast</span>
             </a>
-            <div class="header-status"><span></span> Live forecast</div>
+            <div class="header-actions">
+                <div class="header-status"><span></span> Live forecast</div>
+                <button class="location-button" id="locationButton" type="button" aria-label="Gunakan lokasi perangkat">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>
+                    </svg>
+                </button>
+            </div>
         </header>
 
         <section class="workspace">
@@ -42,6 +50,18 @@
                         </svg>
                     </button>
                 </form>
+
+                <div class="search-options">
+                    <div class="quick-cities" aria-label="Kota populer">
+                        <button type="button" data-city="Jakarta">Jakarta</button>
+                        <button type="button" data-city="Bandung">Bandung</button>
+                        <button type="button" data-city="Surabaya">Surabaya</button>
+                    </div>
+                    <div class="unit-toggle" aria-label="Satuan suhu">
+                        <button type="button" class="active" data-unit="metric" aria-pressed="true">°C</button>
+                        <button type="button" data-unit="imperial" aria-pressed="false">°F</button>
+                    </div>
+                </div>
 
                 <div class="message" id="weatherMessage" role="status" aria-live="polite">Siap mencari cuaca terkini.</div>
             </div>
