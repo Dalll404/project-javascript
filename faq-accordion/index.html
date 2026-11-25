@@ -3,13 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6c63ff" />
     <link rel="stylesheet" href="style.css" />
-    <title>Accordion App</title>
+    <title>FAQ | Learn the basics</title>
   </head>
   <body>
-    <div class="accordion-container" id="accordion">
-      <!-- Accordion Items Will be generate here by javascript -->
-    </div>
+    <main class="page-shell">
+      <section class="faq-card" aria-labelledby="faq-title">
+        <header class="faq-header">
+          <span class="eyebrow">Knowledge base</span>
+          <h1 id="faq-title">Frequently Asked Questions</h1>
+          <p>Everything you need to know about the building blocks of the web.</p>
+        </header>
+
+        <div class="accordion-container" id="accordion"></div>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
