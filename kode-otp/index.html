@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6d28d9">
     <link rel="stylesheet" href="style.css">
-    <title>Otp Generator</title>
+    <title>Generator OTP</title>
 </head>
 <body>
-    
-    <div class="otp-container">
-        <h1>OTP Generator</h1>
-        <div class="otp-box">
-            <input type="text" class="otp-input" maxlength="1">
-            <input type="text" class="otp-input" maxlength="1">
-            <input type="text" class="otp-input" maxlength="1">
-            <input type="text" class="otp-input" maxlength="1">
-        </div>
-        <button id="generate" class="generate-btn">Generate OTP</button>
-        <div id="loading-spinner" class="loading-spinner"></div>
-    </div>
+    <main class="otp-container">
+        <p class="eyebrow">Verifikasi keamanan</p>
+        <h1>Generator OTP</h1>
+        <p class="description">Dapatkan kode 4 digit secara acak.</p>
+
+        <form id="otp-form" aria-label="Kode OTP">
+            <div class="otp-box" aria-label="Masukkan kode 4 digit">
+                <input type="text" class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit pertama" autocomplete="one-time-code">
+                <input type="text" class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit kedua">
+                <input type="text" class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit ketiga">
+                <input type="text" class="otp-input" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit keempat">
+            </div>
+
+            <button type="submit" id="generate" class="generate-btn">
+                <span class="button-label">Generate OTP</span>
+                <span class="loading-spinner" aria-hidden="true"></span>
+            </button>
+            <p id="otp-status" class="otp-status" role="status" aria-live="polite"></p>
+        </form>
+    </main>
 
     <script src="script.js"></script>
 </body>

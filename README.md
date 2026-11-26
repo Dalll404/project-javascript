@@ -12,7 +12,7 @@
 | [Countdown Timer](count-down-timer/)              | Create a countdown to a target date or time.          |
 | [Counter App](counter-app/)                       | Increase or decrease a counter by a customizable step. |
 | [FAQ Accordion](faq-accordion/)                   | Expand and collapse frequently asked questions.       |
-| [OTP Input](kode-otp/)                            | Enter a one-time password with separate input fields. |
+| [OTP Generator](kode-otp/)                        | Generate a 4-digit OTP with input navigation and paste support. |
 | [Number Guessing Game](number-guessing-game/)     | Guess a randomly generated number.                    |
 | [Point App](point-app/)                           | Manage points through a simple interface.             |
 | [Pomodoro](pomodoro/)                             | Focus and take breaks with a configurable timer.      |
